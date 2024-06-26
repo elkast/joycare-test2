@@ -1,0 +1,31 @@
+Étape 4 : Création d'un compte GitHub
+Inscris-toi sur GitHub :
+Rendez-vous sur github.com et inscris-toi pour un compte gratuit.
+Étape 5 : Création d'un nouveau repository
+Crée un nouveau repository :
+Clique sur le bouton "+" en haut à droite et sélectionne "New repository".
+Nom du repository : fete-des-peres.
+Coche "Add a README file".
+Clique sur "Create repository".
+Étape 6 : Upload des fichiers
+Upload des fichiers :
+Clique sur "Upload files".
+Fais glisser les fichiers index.html, styles.css, et les photos dans l'interface de téléchargement.
+Clique sur "Commit changes" pour uploader les fichiers.
+Étape 7 : Mise en ligne avec GitHub Pages
+Active GitHub Pages :
+Va dans les "Settings" du repository.
+Descends jusqu'à la section "Pages".
+Sous "Source", sélectionne la branche "main" et le dossier /root.
+Clique sur "Save".
+Étape 8 : Accès au site
+Obtiens l'URL de ton site :
+Après quelques minutes, GitHub Pages générera un lien pour ton site web. Ce lien se trouvera dans la section "Pages" des paramètres.
+Exemple de message pour accompagner le cadeau
+Cher Papa,
+
+Cette année, j'ai voulu créer quelque chose de spécial pour toi en utilisant mes compétences en informatique. J'espère que ce petit site web te plaira et te rappellera combien tu es important pour moi. Joyeuse fête des pères !
+
+Avec tout mon amour,
+
+[Votre Nom]

@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+
+<style>
+    body {
+        margin: 0;
+        background-color: #cbc;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100vh;
+        position: relative;
+        overflow: hidden;
+    }
+.waves {
+        position: absolute;
+        width: 100%;
+        height: 25vh;
+        min-height: 100px;
+        max-height: 150px;
+    }
+.waves.top {
+        top: 0;
+        transform: rotate(180deg);
+    }
+.waves.bottom {
+        bottom: 0;
+    }
+use {
+        animation: move-forever 25s cubic-bezier(0.55, 0.5, 0.45, 0.5) infinite;
+    }
+use:nth-child(1) {
+        animation-delay: -2s;
+        animation-duration: 7s;
+    }
+use:nth-child(2) {
+        animation-delay: -3s;
+        animation-duration: 10s; 
+    }
+use:nth-child(3) {
+        animation-delay: -4s;
+        animation-duration: 13s;
+    }
+use:nth-child(4) {
+        animation-delay: -5s;
+        animation-duration: 20s;
+    }
+@keyframes move-forever {
+        0% {
+            transform: translate3d(-90px, 0, 0);
+        }
+        100% {
+            transform: translate3d(85px, 0, 0);
+        }
+    }
+@media (max-width: 768px) {
+.waves {
+            height: 80px;
+            min-height: 40px;
+        }
+h1 {
+            font-size: 24px;
+        }
+    }
+.blink {
+        display: inline-block;
+        height: 18px;
+        width: 2px;
+        background-color: #fff;
+        animation: blink 0.5s infinite linear;
+    }
+@keyframes blink {
+        0% { opacity: 0; }
+        50% { opacity: 1; }
+        100% { opacity: 0; }
+    }
+#card {
+        word-wrap: break-word;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        height: 550px;
+        width: calc(100% - 24px);
+        background-color: #000;
+        border-radius: 20px;
+        box-shadow: 5px 5px 10px 0px rgba(255, 50, 255, 0.4);
+        text-align: center;
+        border: 4px solid #fff;
+        z-index: 0;
+    }
+#typing {
+        font-size: 30px;
+        color: #fff;
+        font-family: "Courier New", Courier, monospace;
+        letter-spacing:-2px;
+    }
+#header {
+        height: 150px;
+        background-color: #8020C0;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        padding: 10px;
+    }
+.header-item {
+        text-align: center;
+    }
+.header-image {
+        height: 100px;
+        width: 100px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid #fff;
+    }
+#img1{
+    position:relative;
+    left:-5px;
+}
+#img2{
+    position:relative;
+    left:10px;
+}
+.name {
+        font-size: 24px;
+        font-family: "Courier New", Courier, monospace;
+        color: #fff;
+        margin-top: 5px;
+    }
+#name1{
+    position:relative;
+    left:-5px;
+}
+#name2{
+    position:relative;
+    left:10px;
+}
+#line{
+    height:170px;
+    width:5px;
+    background-color:#fff;
+    position:absolute;
+    left:calc((100%-24)/2);
+}
+.star {
+        position: absolute;
+        animation-name: move;
+        animation-iteration-count: 1;
+        animation-timing-function: linear;
+        background-color: #fff;
+        top: -5%;
+        border-radius: 50%;
+        box-shadow: 0px 0px 5px 2px #fff;
+    }
+@keyframes move {
+        0% { top: -5%; }
+        100% { top: 100%; }
+    }
+</style>
+<script>
+    window.onload = () => {
+    const song = document.getElementById("audio");
+    document.body.addEventListener("click",audioStart,{once:true})
+function audioStart(){
+    song.play();
+}
+        const type = document.getElementById("typing");
+        const text = " bonne nuit a toute et a tous et que le seigneur dans ont infini bonteé me garde dans ça grace et me permette de vite me retablir,amen et que le seigneur soit avec vous et en tous lieu de maniere , a faire prospere vos entreprises. "
+        let i = 0;
+
+        const interval = setInterval(() => {
+            if (i < text.length) {
+                if (text[i] === '\n') {
+                    type.innerHTML += '<br>';
+                } else {
+                    type.innerHTML += text[i];
+                }
+                i++;
+            } else {
+                clearInterval(interval);
+            }
+        }, 80);
+
+        setInterval(function () {
+            const canvas = document.getElementById('confetti-canvas')
+            const jsConfetti = new JSConfetti({ canvas })
+
+            jsConfetti.addConfetti({
+                emojis: ['🟥', '🟧', '🟨', '🟩', '🟦', '🟪'],
+                emojiSize: 20,
+                confettiNumber: 50,
+                confettiColors: ['#ff0000', '#00ff00', '#0000ff'],
+                confettiRadius: 10,
+                confettiSpeed: 2,
+                confettiFallTime: 3
+            });
+        }, 3000);
+
+        setInterval(function () {
+            const el = document.createElement("div");
+            document.body.appendChild(el);
+            el.style.left = Math.floor(Math.random() * 100) + "%";
+            el.setAttribute("class", "star");
+            var edge = (Math.floor(Math.random() * 2) + 5) + "px";
+            el.style.height = edge;
+            el.style.width = edge;
+            el.style.animationDuration = Math.random() * 2 + 4 + "s";
+
+            el.addEventListener('animationend', function () {
+                el.remove();
+            });
+        }, 400);
+    };
+</script>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<script src="http://cdn.jsdelivr.net/npm/js-confetti@latest/dist/js-confetti.browser.js"></script>
+<title>fete des pere 2024</title>
+</head>
+<body>
+
+<audio loop id="audio" loop>
+<source src = >
+</audio> 
+  <div class="waves top">
+    <svg class="waves" viewBox="0 24 150 28">
+      <defs>
+        <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+      </defs>
+      <g class="parallax">
+        <use href="#gentle-wave" x="48" y="0" fill="rgba(0,255,255,0.7)" />
+        <use href="#gentle-wave" x="48" y="3" fill="rgba(0,255,255,0.5)" />
+        <use href="#gentle-wave" x="48" y="5" fill="rgba(0,255,255,0.3)" />
+      </g>
+    </svg>
+  </div>
+  <div class="waves bottom">
+    <svg class="waves" viewBox="0 24 150 28">
+      <g class="parallax">
+        <use href="#gentle-wave" x="48" y="0" fill="rgba(0,255,255,0.7)" />
+        <use href="#gentle-wave" x="48" y="3" fill="rgba(0,255,255,0.5)" />
+        <use href="#gentle-wave" x="48" y="5" fill="rgba(0,255,255,0.3)" />
+      </g>
+    </svg>
+  </div>
+  <div id="card">
+    <div id="header">
+      <div class="header-item">
+        <img src="LOGO SEO 3.jpeg" class="header-image" id="img1">
+        <div class="name" id="name1">mr orsini</div>
+      </div>
+      <div id="line"></div>
+      <div class="header-item">
+        <img src="" class="header-image" id="img2">
+        <div class="name" id="name2">md ????</div>
+      </div>
+    </div>
+    <br><br>
+    <span id="typing" align-items="center"></span>
+    <span class="blink"></span>
+  </div>
+</body>
+</html>
